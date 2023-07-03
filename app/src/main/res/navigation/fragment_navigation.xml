@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_navigation"
+    app:startDestination="@id/navigation_blog">
+
+    <fragment
+        android:id="@+id/navigation_blog"
+        android:name="com.myspace.spaceflightnews.ui.BlogFragment"
+        android:label="Space news Blog"
+        tools:layout="@layout/item_blog" />
+    <fragment android:id="@+id/navigation_article"
+        android:name="com.myspace.spaceflightnews.ui.NewsFragment"
+        android:label="Article"
+        tools:layout="@layout/item_article"/>
+
+</navigation>

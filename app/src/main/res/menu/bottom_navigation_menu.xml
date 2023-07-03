@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/navigation_blog"
+        android:title="Blog"
+        android:icon="@drawable/writeicon"
+        />
+
+    <item
+        android:id="@+id/navigation_article"
+        android:title="News"
+        android:icon="@drawable/news" />
+
+
+
+    <!-- Add more items as needed -->
+</menu>

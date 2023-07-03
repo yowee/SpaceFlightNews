@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="217dp"
+        android:layout_height="318dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/rockett" />
+
+    <TextView
+        android:id="@+id/countdown_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_thin"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="60sp" />
+
+    <!-- Add any other elements or designs as desired -->
+
+</RelativeLayout>
