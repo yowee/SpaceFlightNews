@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.myspace.spaceflightnews.data.model.BlogModel
 import com.myspace.spaceflightnews.data.remote.ApiCall
 import com.myspace.spaceflightnews.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,20 +35,23 @@ class BlogFragment : Fragment() {
 
         binding = HomeFragmentBinding.inflate(inflater, container, false)
 
-        loadData()
+        val viewModel by viewModels<BlogViewModel>()
+
+        if(!viewModel.isLoaded)
+            viewModel.getBlogData()
+
+        viewModel.blogLiveData.observe(viewLifecycleOwner){
+            blogData -> loadData(blogData)
+        }
 
         return binding.root
     }
 
-    private fun loadData() {
-        CoroutineScope(Dispatchers.Main).launch {
-
-            val result = apiCall.getSpaceBlogs()
-            binding.rvHomeFragment.apply {
+    private fun loadData(blogData: BlogModel) {
+         binding.rvHomeFragment.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = BlogAdapter(requireContext(), result.results)
+                adapter = BlogAdapter(requireContext(), blogData.results)
             }
 
-        }
     }
 }

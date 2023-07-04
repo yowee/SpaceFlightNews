@@ -1,5 +1,7 @@
 package com.myspace.spaceflightnews.di
 
+import com.myspace.spaceflightnews.data.Ripository.Repository
+import com.myspace.spaceflightnews.data.Ripository.RepositoryImpl
 import com.myspace.spaceflightnews.data.remote.ApiCall
 import com.myspace.spaceflightnews.data.remote.ApiDetails
 import dagger.Module
@@ -43,6 +45,13 @@ class RetrofitModule {
         retrofit: Retrofit
     ): ApiCall {
         return retrofit.create(ApiCall::class.java)
+    }
+
+    @Provides
+    fun provideRepository(
+       apiCall: ApiCall
+    ): Repository{
+        return RepositoryImpl(apiCall)
     }
 
 }
