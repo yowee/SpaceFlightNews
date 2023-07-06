@@ -49,8 +49,8 @@ class RetrofitModule {
 
     @Provides
     fun provideRepository(
-       apiCall: ApiCall
-    ): Repository{
+        apiCall: ApiCall
+    ): Repository {
         return RepositoryImpl(apiCall)
     }
 

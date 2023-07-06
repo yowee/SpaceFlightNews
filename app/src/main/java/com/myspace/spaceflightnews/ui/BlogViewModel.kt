@@ -11,16 +11,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BlogViewModel @Inject constructor(private val repository: Repository)
-    : ViewModel(){
+class BlogViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    val blogLiveData : MutableLiveData<BlogModel> by lazy {
+    val blogLiveData: MutableLiveData<BlogModel> by lazy {
         MutableLiveData<BlogModel>()
     }
 
     var isLoaded = false
 
-    fun getBlogData(){
+    fun getBlogData() {
         CoroutineScope(Dispatchers.Main).launch {
             val data = repository.getSpaceBlogs()
             blogLiveData.postValue(data)

@@ -12,9 +12,6 @@ import com.myspace.spaceflightnews.data.model.BlogModel
 import com.myspace.spaceflightnews.data.remote.ApiCall
 import com.myspace.spaceflightnews.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,21 +34,21 @@ class BlogFragment : Fragment() {
 
         val viewModel by viewModels<BlogViewModel>()
 
-        if(!viewModel.isLoaded)
+        if (!viewModel.isLoaded)
             viewModel.getBlogData()
 
-        viewModel.blogLiveData.observe(viewLifecycleOwner){
-            blogData -> loadData(blogData)
+        viewModel.blogLiveData.observe(viewLifecycleOwner) { blogData ->
+            loadData(blogData)
         }
 
         return binding.root
     }
 
     private fun loadData(blogData: BlogModel) {
-         binding.rvHomeFragment.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = BlogAdapter(requireContext(), blogData.results)
-            }
+        binding.rvHomeFragment.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = BlogAdapter(requireContext(), blogData.results)
+        }
 
     }
 }
